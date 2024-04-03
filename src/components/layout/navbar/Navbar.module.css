@@ -17,6 +17,16 @@
   font-size: var(--medium-font-size);
 }
 
+.titleLink {
+  color: var(--accent-text-color);
+  text-decoration: none;
+  transition: color 200ms linear;
+}
+
+.titleLink:hover {
+  color: var(--primary-text-color);
+}
+
 .menu {
   list-style: none;
   display: flex;
