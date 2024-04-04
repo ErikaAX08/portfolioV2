@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: space-between;
   text-transform: uppercase;
-  color: var(--accent-text-color);
+  color: var(--primary-text-color);
   font-size: var(--medium-font-size);
   background-color: #0000007e;
   position: sticky;
@@ -18,13 +18,13 @@
 }
 
 .titleLink {
-  color: var(--accent-text-color);
+  color: var(--primary-text-color);
   text-decoration: none;
   transition: color 200ms linear;
 }
 
 .titleLink:hover {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .menu {

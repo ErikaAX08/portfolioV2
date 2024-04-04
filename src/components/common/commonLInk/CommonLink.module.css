@@ -1,16 +1,16 @@
 .linkContainer {
   text-transform: uppercase;
-  color: var(--accent-text-color);
+  color: var(--primary-text-color);
   position: relative;
 }
 
 .link {
-  color: var(--accent-text-color);
+  color: var(--primary-text-color);
   text-decoration: none;
 }
 
 .linkContainer:hover .link {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .linkContainer::before {
