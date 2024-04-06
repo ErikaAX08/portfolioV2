@@ -1,0 +1,11 @@
+.linkContainer {
+    width: fit-content;
+    font-weight: bold;
+    border-bottom: 5px solid var(--accent-text-color);
+}
+
+.link {
+  color: var(--accent-text-color);
+  text-decoration: none;
+  text-transform: uppercase;
+}
