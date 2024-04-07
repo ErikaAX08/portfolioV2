@@ -1,12 +1,22 @@
 "use client";
 import { AccentLink, CommonLink } from "@components/common";
 import styles from "./Footer.module.css";
+import Image from "next/image";
 
 function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.contactContainer}>
-        <p className={styles.contactContainerLink}>Have a project in mind?</p>
+        <p className={styles.contactContainerLink}>
+          <Image
+            src="/icons/terminal-solid.svg"
+            alt="Termial icon"
+            width={32}
+            height={32}
+            className={styles.contactIcon}
+          />
+          Have a project in mind?
+        </p>
         <AccentLink
           className={styles.contactLink}
           text="Let's work together"
