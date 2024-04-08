@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: var(--normal-spacing);
+  padding: var(--normal-spacing);
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: var(--primary-text-color);
+  text-transform: uppercase;
+  font-size: var(--large-font-size);
+  letter-spacing: var(--small-letter-spacing);
+  line-height: var(--normal-line-height);
+}
+
+.subtitle {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactIcon {
+  width: var(--medium-font-size);
+  margin-right: var(--small-spacing);
+}
+
+.description {
+  text-transform: uppercase;
+  line-height: var(--large-line-height);
+  font-size: var(--medium-font-size);
+  max-width: 400px;
+}
+
+.contactLink {
+  font-size: var(--normal-font-size);
+}
+
+@media screen and (min-width: 498px) {
+  .title {
+    max-width: 1200px;
+  }
+}
