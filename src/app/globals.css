@@ -6,13 +6,19 @@
   --tertiary-text-color: #e5e3df;
   --accent-text-color: #8131ff;
 
+  --small-spacing: 10px;
   --normal-spacing: 20px;
   --medium-spacing: 40px;
   --large-spacing: 80px;
 
   --small-font-size: 14px;
   --medium-font-size: 16px;
-  --large-font-size: 36px;
+  --large-font-size: 32px;
+  
+  --small-letter-spacing: -2px;
+  
+  --large-line-height: 1.5em;
+  --normal-line-height: 1em;
 }
 
 * {
@@ -27,4 +33,22 @@ body {
 
 strong {
   color: var(--primary-text-color);
+}
+
+@media screen and (min-width: 392px) {
+  :root{ 
+    --large-font-size: 42px;
+  }
+}
+
+@media screen and (min-width: 515px) {
+  :root {
+    --large-font-size: 45px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  :root {
+    --large-font-size: 72px;
+  }
 }
