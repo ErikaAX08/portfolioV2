@@ -1,4 +1,6 @@
 :root {
+  --large-max-width: 1400px;
+
   --main-background-color: #000;
   
   --primary-text-color: #fff;
