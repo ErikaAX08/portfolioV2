@@ -16,7 +16,7 @@ function Header() {
         Available for new projects
       </p>
       <h1 className={styles.title}>
-        I BUILD digital EXPERIENCES through code.
+        I BUILD digital EXPERIENCES through code
       </h1>
       <p className={styles.description}>
         Full stack <strong>web</strong> & <strong>mobile app</strong> developer,

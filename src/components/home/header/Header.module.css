@@ -4,7 +4,8 @@
   text-align: center;
   gap: var(--normal-spacing);
   padding: var(--normal-spacing);
-  min-height: 80vh;
+  margin-top: calc(var(--large-spacing) * 1.5);
+  margin-bottom: calc(var(--large-spacing) * 2);
   justify-content: center;
   align-items: center;
 }
