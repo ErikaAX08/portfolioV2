@@ -1,0 +1,28 @@
+.videoContainer {
+  max-width: var(--large-max-width);
+  margin: 0px auto;
+}
+
+.video {
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+@media screen and (min-width: 500px) {
+  .videoContainer {
+    padding-left: var(--normal-spacing);
+    padding-right: var(--normal-spacing);
+  }
+
+  .video {
+    border-radius: 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .videoContainer {
+    padding-right: calc(var(--large-spacing) * 1.5);
+    padding-left: calc(var(--large-spacing) * 1.5);
+  }
+}
