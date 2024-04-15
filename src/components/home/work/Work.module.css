@@ -1,0 +1,17 @@
+.section {
+    padding: var(--normal-spacing);
+    display: flex;
+    flex-direction: column;
+    gap: var(--medium-spacing);
+    max-width: var(--large-max-width);
+    margin: 0px auto;
+    margin-top: calc(var(--large-spacing) * 2);
+    margin-bottom: calc(var(--large-spacing) * 2);
+}
+
+.title {
+  font-size: var(--large-font-size);
+  color: var(--primary-text-color);
+  text-transform: uppercase;
+  letter-spacing: var(--small-letter-spacing);
+}
