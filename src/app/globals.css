@@ -14,13 +14,15 @@
   --large-spacing: 80px;
 
   --small-font-size: 14px;
-  --medium-font-size: 16px;
+  --medium-font-size: 18px;
   --large-font-size: 32px;
   
   --small-letter-spacing: -2px;
   
   --large-line-height: 1.5em;
   --normal-line-height: 1em;
+  
+  --border-color: #71695d
 }
 
 * {
