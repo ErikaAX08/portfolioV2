@@ -43,7 +43,7 @@
 .title {
   color: var(--primary-text-color);
   text-transform: uppercase;
-  font-size: calc(var(--medium-font-size) * 2);
+  font-size: calc(var(--medium-font-size) * 1.5);
   line-height: var(--large-line-height);
 }
 
@@ -71,6 +71,10 @@
 }
 
 @media screen and (min-width: 600px) {
+  .title {
+    font-size: calc(var(--medium-font-size) * 2);
+  }
+
   .imagenes {
     grid-template-columns: repeat(2, 1fr);
   }
