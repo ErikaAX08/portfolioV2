@@ -25,6 +25,7 @@
   gap: var(--small-spacing);
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .contactIcon {
