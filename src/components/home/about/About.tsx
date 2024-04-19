@@ -1,10 +1,9 @@
 import Image from "next/image";
 import styles from "./About.module.css";
-import Link from "next/link";
 
 function About() {
   return (
-    <section className={styles.section}>
+    <section id="#about" className={styles.section}>
       <div>
         <h2 className={styles.title}>Make things & help others</h2>
       </div>

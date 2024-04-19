@@ -12,7 +12,6 @@
   color: var(--primary-text-color);
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: var(--large-spacing);
 }
 
 .gridImages {
@@ -43,7 +42,7 @@
 .subtitle {
   color: var(--primary-text-color);
   text-transform: uppercase;
-  font-size: calc(var(--medium-spacing) * 1.2);
+  font-size: var(--medium-spacing);
   margin-bottom: calc(var(--medium-spacing) * 1.5);
 }
 
@@ -85,9 +84,17 @@
     flex-direction: row;
     gap: var(--normal-spacing);
   }
+  
+  .subtitle {
+    font-size: calc(var(--medium-spacing) * 1.2);
+  }
 }
 
 @media screen and (min-width: 800px) {
+  .title {
+    margin-bottom: var(--large-spacing);
+  }
+
   .gridImages {
     grid-template-columns: repeat(4, 1fr);
   }
