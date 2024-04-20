@@ -1,5 +1,13 @@
+import { About, Header, MainVideo, Playground, Work } from "@/components/home";
+
 export default function Home() {
   return (
-    <h1>Hello World!</h1>
+    <article>
+      <Header />
+      <MainVideo />
+      <Work />
+      <About />
+      <Playground />
+    </article>
   );
 }
