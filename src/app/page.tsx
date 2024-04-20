@@ -1,4 +1,4 @@
-import { About, Header, MainVideo, Playground, Work } from "@/components/home";
+import { About, Header, MainVideo, Gallery, Work } from "@/components/home";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <MainVideo />
       <Work />
       <About />
-      <Playground />
+      <Gallery />
     </article>
   );
 }
