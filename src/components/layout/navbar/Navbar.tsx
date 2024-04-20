@@ -7,7 +7,7 @@ function Navbar() {
     <nav className={styles.navbar}>
       <strong className={styles.title}>
         <Link className={styles.titleLink} href={"/"}>
-          Erika AX
+        Erika Amastal
         </Link>
       </strong>
       <ul className={styles.menu}>
