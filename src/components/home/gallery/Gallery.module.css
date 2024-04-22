@@ -13,12 +13,13 @@
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  gap: var(--normal-spacing);
 }
 
 .titleContainer {
   display: flex;
   flex-direction: row;
-  gap: var(--large-spacing);
+  gap: var(--normal-spacing);
   list-style: none;
   animation: slide 50s infinite linear;
 }
@@ -79,6 +80,14 @@
 @media screen and (min-width: 800px) {
   .section {
     gap: var(--normal-spacing);
+  }
+
+  .sliderTitle {
+    gap: var(--large-spacing);
+  }
+
+  .titleContainer {
+    gap: var(--large-spacing);
   }
 
   .sectionCol {
