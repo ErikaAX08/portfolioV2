@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--normal-spacing);
+  margin-top: calc(var(--large-spacing) * 1.5);
+  margin-bottom: calc(var(--large-spacing) * 2);
+}
+
+.title {
+  color: var(--primary-text-color);
+  text-transform: uppercase;
+  font-size: var(--large-font-size);
+  text-align: center;
+  max-width: calc(var(--large-max-width) / 2);
+  letter-spacing: var(--small-letter-spacing);
+  line-height: var(--normal-line-height);
+}

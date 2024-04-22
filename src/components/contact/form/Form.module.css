@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--large-spacing);
+  max-width: calc(var(--large-max-width) / 2);
+  margin: 0px auto;
+  padding: var(--normal-spacing);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--normal-spacing);
+}
+
+.inputLabel {
+  font-size: 24px;
+  letter-spacing: var(--normal-letter-spacing);
+}
+
+.inputText {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--small-spacing);
+  font-size: 24px;
+  color: var(--primary-text-color);
+  letter-spacing: var(--normal-letter-spacing);
+}
+
+.inputList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--small-spacing);
+}
+
+.inputRadioContainer {
+  font-size: 24px;
+  letter-spacing: var(--normal-letter-spacing);
+  color: var(--primary-text-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputRadio {
+  margin-right: var(--small-spacing);
+  width: 24px;
+  height: 24px;
+  color: var(--accent-text-color);
+  background-color: var(--accent-text-color);
+}
+
+.button {
+  background-color: #161616;
+  outline: none;
+  padding: calc(var(--small-spacing) * 1.5) 0px;
+  border: none;
+  border-radius: 100px;
+  font-size: 24px;
+  letter-spacing: var(--normal-letter-spacing);
+  font-weight: bold;
+  color: var(--tertiary-text-color);
+  transition: all 200ms linear;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--accent-text-color);
+  color: var(--main-background-color);
+}
