@@ -47,9 +47,9 @@
 }
 
 .contentContainer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--normal-spacing);
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: calc(var(--medium-spacing) * 1.5);
 }
 
 .contentCols {
@@ -58,6 +58,51 @@
   gap: calc(var(--medium-spacing) * 1.5);
   line-height: var(--large-line-height);
   font-size: var(--medium-font-size);
+}
+
+.aboutItemContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.indicatorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+}
+
+.numberContainer {
+  position: relative;
+}
+
+.numberContainer > span {
+  color: #000;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  font-weight: bold;
+}
+
+.line {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0.2),
+    hsla(0, 0%, 100%, 0.2) 50%,
+    black 0,
+    black
+  );
+  background-size: 1px 5px;
+  position: absolute;
+  top: 50px;
+}
+
+.hiddeLine {
+  display: block;
 }
 
 .serviceContainer {
@@ -80,17 +125,21 @@
     margin-top: var(--medium-spacing);
   }
 
-  .contentContainer {
-    flex-direction: row;
-    gap: var(--normal-spacing);
-  }
-  
   .subtitle {
     font-size: calc(var(--medium-spacing) * 1.2);
   }
 }
 
 @media screen and (min-width: 800px) {
+  .contentContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--normal-spacing);
+  }
+
+  .hiddeLine {
+    display: none;
+  }
+
   .title {
     margin-bottom: var(--large-spacing);
   }
