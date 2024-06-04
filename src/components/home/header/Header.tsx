@@ -22,7 +22,7 @@ function Header() {
       <AccentLink
         className={styles.contactLink}
         text="Let's work together"
-        url="#"
+        url="/contact"
       />
     </header>
   );
