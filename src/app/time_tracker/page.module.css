@@ -1,0 +1,33 @@
+.container {
+    max-width: var(--large-max-width);
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+}
+
+.imageContainer {
+    position: relative;
+    width: calc(1400px / 1.4);
+    height: calc(966px / 1.4);
+}
+
+.image {
+    height: fit-content;
+    border-radius: 20px;
+}
+
+.containerContent {
+    margin-top: 80px;
+    text-align: start;
+    max-width: calc(100% / 12 * 6);
+    width: 100%;
+}
+
+.title {
+    color: var(--primary-text-color);
+    font-size: 40px;
+}
