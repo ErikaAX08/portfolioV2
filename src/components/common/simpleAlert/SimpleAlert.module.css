@@ -1,0 +1,85 @@
+.container {
+  width: fit-content;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--normal-spacing);
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  margin: 70px 20px;
+  transition: transform 200ms ease-in-out;
+  animation: slideIn 2s forwards, slideOut 2s forwards 6.5s;
+  will-change: transform, opacity;
+}
+
+.container:hover {
+  transform: scale(1.05);
+}
+
+.text {
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+  padding: var(--normal-spacing);
+  transition: font-size 200ms ease-in-out;
+}
+
+.imageContainer {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  width: 15px;
+  position: relative;
+  cursor: pointer;
+  padding: var(--normal-spacing);
+}
+
+.imageContainer > img {
+  width: fit-content;
+  height: fit-content;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.3);
+  animation: progress 7s linear;
+  width: 100%;
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
