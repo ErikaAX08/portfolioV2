@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CommonLink } from "@/components/common";
+import { CommonLink } from "@/presentation/common";
 import styles from "./Navbar.module.css";
 
 function Navbar() {

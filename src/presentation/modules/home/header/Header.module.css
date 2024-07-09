@@ -16,6 +16,20 @@
   font-size: var(--large-font-size);
   letter-spacing: var(--small-letter-spacing);
   line-height: var(--normal-line-height);
+
+  /* ANIMATION */
+  --bg-size: 400%;
+  --color-one: #52a8ff;
+  --color-two: #bf7af0;
+  background: linear-gradient(
+      90deg,
+      var(--color-one),
+      var(--color-two),
+      var(--color-one)
+    )
+    0 0 / var(--bg-size) 100%;
+  color: transparent;
+  background-clip: text;
 }
 
 .subtitle {
@@ -47,5 +61,16 @@
 @media screen and (min-width: 498px) {
   .title {
     max-width: 1200px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .title {
+    animation: move-bg 8s linear infinite;
+  }
+  @keyframes move-bg {
+    to {
+      background-position: var(--bg-size) 0;
+    }
   }
 }

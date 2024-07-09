@@ -1,10 +1,20 @@
-import Image from "next/image";
+"use client";
 import styles from "./Header.module.css";
-import { AccentLink } from "@/components/common";
+import { AccentLink } from "@/presentation/common";
+import { useInView } from "@/presentation/hooks";
+import { useRef } from "react";
 
 function Header() {
+  const headerRef = useRef<HTMLElement>(null);
+  const isInView = useInView(headerRef);
+
   return (
-    <header className={styles.header}>
+    <header
+      ref={headerRef}
+      className={`${styles.header} ${
+        isInView ? "fadeInUp" : "fadeInUp_hidden"
+      }`}
+    >
       <p className={styles.subtitle}>
         <span>fullstack</span>
         <span>/</span>

@@ -1,5 +1,5 @@
 "use client";
-import { AccentLink, CommonLink } from "@components/common";
+import { AccentLink, CommonLink } from "@/presentation/common";
 import styles from "./Footer.module.css";
 
 function Footer() {

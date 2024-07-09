@@ -2,7 +2,7 @@
   --large-max-width: 1400px;
 
   --main-background-color: #000;
-  
+
   --primary-text-color: #fff;
   --secondary-text-color: #aea79c;
   --tertiary-text-color: #e5e3df;
@@ -16,14 +16,14 @@
   --small-font-size: 14px;
   --medium-font-size: 18px;
   --large-font-size: 36px;
-  
+
   --small-letter-spacing: -2px;
   --normal-letter-spacing: -1px;
-  
+
   --large-line-height: 1.5em;
   --normal-line-height: 1em;
-  
-  --border-color: #71695d
+
+  --border-color: #71695d;
 }
 
 * {
@@ -40,8 +40,28 @@ strong {
   color: var(--primary-text-color);
 }
 
+.fadeInUp {
+  animation: fadeInUp 1s ease backwards;
+}
+
+.fadeInUp_hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
+}
+
 @media screen and (min-width: 392px) {
-  :root{ 
+  :root {
     --large-font-size: 42px;
   }
 }

@@ -1,4 +1,4 @@
-import { About, Header, MainVideo, Gallery, Work } from "@/components/home";
+import { About, Header, MainVideo, Gallery, Work } from "@/presentation/modules/home";
 
 export default function Home() {
   return (

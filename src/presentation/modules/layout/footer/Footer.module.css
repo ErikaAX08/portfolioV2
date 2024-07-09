@@ -45,7 +45,7 @@
 }
 
 .contactLink {
-  font-size: 7.4vw;
+  font-size: 7vw;
 }
 
 @media screen and (min-width: 800px) {
@@ -66,6 +66,12 @@
   }
 
   .contactLink {
-    font-size: 3vw;
+    font-size: 5vw;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .contactLink {
+    font-size: 4vw;
   }
 }

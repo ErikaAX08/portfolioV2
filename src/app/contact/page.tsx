@@ -1,4 +1,4 @@
-import { Form, Header } from "@/components/contact";
+import { Form, Header } from "@/presentation/modules/contact";
 
 function Contact() {
   return (
