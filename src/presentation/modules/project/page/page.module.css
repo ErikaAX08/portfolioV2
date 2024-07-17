@@ -60,7 +60,7 @@
   margin-top: 20px;
 }
 
-.content ol {
+.content ol, .content ul {
   margin-left: 40px;
 }
 
