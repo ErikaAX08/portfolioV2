@@ -3,6 +3,7 @@ import { FirebaseArticleRepository } from "@/data/repositories/ArticleRepository
 import { GetArticle } from "@/domain/useCases/articles/GetArticle";
 import { notFound } from "next/navigation";
 import Article from "@/presentation/modules/project/page/Article";
+import { Article as ArticleModel } from "@/domain/models/Article";
 
 export async function generateMetadata({
   params,
@@ -16,7 +17,7 @@ export async function generateMetadata({
   if (!projectData) return notFound();
 
   return {
-    title: `${projectData.title} - Erika AX`,
+    title: `${projectData.data?.title} - Erika AX`,
     // description: page.seo?.description || page.bodySummary,
     openGraph: {
       // publishedTime: page.createdAt,
@@ -33,5 +34,5 @@ export default async function Page({ params }: { params: { page: string } }) {
 
   if (!pageData) return notFound();
 
-  return <Article page={pageData} />;
+  return <Article page={pageData.data as ArticleModel} />;
 }

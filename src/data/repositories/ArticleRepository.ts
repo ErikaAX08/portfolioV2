@@ -1,6 +1,7 @@
 import { Page } from "@/domain/models/Page";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+import { Article } from "@/domain/models/Article";
 
 export interface ArticleRepository {
   getArticleByUrl(url: string): Promise<Page | null>;
@@ -14,11 +15,15 @@ export class FirebaseArticleRepository implements ArticleRepository {
 
       if (docSnap.exists()) {
         const projectData = docSnap.data();
-        const project: Page = {
+        const article: Article = {
           title: projectData.title,
           image: projectData.image,
           content: projectData.content,
           lastUpdated: projectData.lastUpdated,
+        }
+        const project: Page = {
+          type: projectData.type,
+          data: article
         };
         return project;
       } else {

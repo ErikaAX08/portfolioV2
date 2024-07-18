@@ -1,7 +1,7 @@
+import { Article } from "./Article";
+import { Form } from "./Form";
+
 export interface Page {
-    title: string;
-    image: string;
-    content: string;
-    lastUpdated: string;
-  }
-  
+  type: string;
+  data: undefined | Article | Form;
+}

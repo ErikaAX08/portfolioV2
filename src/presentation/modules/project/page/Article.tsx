@@ -1,16 +1,16 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { Page } from "@/domain/models/Page";
 import { FC } from "react";
+import { Article as ArticleModel } from "@/domain/models/Article";
 
 interface ArticleProps {
-  page: Page;
+  page: ArticleModel;
 }
 
 const Article: FC<ArticleProps> = ({ page }) => {
   return (
     <article className={styles.container}>
-      <h2 className={styles.title}>{page.title}</h2> 
+      <h2 className={styles.title}>{page.title}</h2>
       {page.image && (
         <div className={styles.imageContainer}>
           <Image
@@ -21,7 +21,7 @@ const Article: FC<ArticleProps> = ({ page }) => {
           />
         </div>
       )}
-     
+
       <section className={styles.containerContent}>
         <div
           className={styles.content}
