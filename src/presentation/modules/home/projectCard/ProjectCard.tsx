@@ -2,22 +2,11 @@ import Image from "next/image";
 import styles from "./ProjectCard.module.css";
 import Link from "next/link";
 import { FC } from "react";
+import { SelectedWork } from "@/domain/models/SelectedWork";
 
-interface ProjectCardProps {
-  name: string;
-  description: string[];
-  link: {
-    name: string;
-    url: string;
-  };
-  images: {
-    src: string;
-    alt: string;
-  }[];
-}
-
-const ProjectCard: FC<ProjectCardProps> = ({
+const ProjectCard: FC<SelectedWork> = ({
   name,
+  article_link,
   description,
   link,
   images,
@@ -25,12 +14,21 @@ const ProjectCard: FC<ProjectCardProps> = ({
   return (
     <article className={styles.project}>
       <div className={styles.projectInfo}>
-        <h2 className={styles.title}>{name}</h2>
-        <div className={styles.description}>
-          {description.map((pharagrap, key) => (
-            <p key={key}>{pharagrap}</p>
-          ))}
-        </div>
+        <h2 className={styles.title}>
+          {article_link ? (
+            <Link className={styles.titleLink} href={article_link}>
+              {name}
+            </Link>
+          ) : (
+            name
+          )}
+        </h2>
+
+        <div
+          className={styles.description}
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></div>
+        
         <Link className={styles.linkContainer} href={link.url} target="_blank">
           <span className={styles.link}>{link.name}</span>
           <Image
