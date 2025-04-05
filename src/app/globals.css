@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
 :root {
   --large-max-width: 1400px;
 
@@ -6,7 +8,7 @@
   --primary-text-color: #fff;
   --secondary-text-color: #aea79c;
   --tertiary-text-color: #e5e3df;
-  --accent-text-color: #a8abfe;
+  --accent-text-color: #FF0092;
 
   --small-spacing: 10px;
   --normal-spacing: 20px;
@@ -16,6 +18,7 @@
   --small-font-size: 14px;
   --medium-font-size: 18px;
   --large-font-size: 36px;
+  --x-large-font-size: 46px;
 
   --small-letter-spacing: -2px;
   --normal-letter-spacing: -1px;
@@ -23,7 +26,7 @@
   --large-line-height: 1.5em;
   --normal-line-height: 1em;
 
-  --border-color: #71695d;
+  --border-color: #373737;
 }
 
 * {
