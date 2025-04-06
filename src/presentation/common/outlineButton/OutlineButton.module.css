@@ -1,0 +1,12 @@
+.button {
+    background: transparent;
+    padding: var(--small-spacing);
+    color: var(--primary-text-color);
+    font-size: var(--small-font-size);
+    letter-spacing: -0.7px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 2px solid var(--primary-text-color);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
