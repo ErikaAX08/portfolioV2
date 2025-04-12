@@ -1,0 +1,222 @@
+.galleryContainer {
+    width: 100%;
+    position: relative;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+.imageWrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1),
+    opacity 0.3s ease,
+    box-shadow 0.5s ease;
+    background-color: #222;
+    will-change: transform, opacity;
+}
+
+.large {
+    height: 600px;
+    margin-bottom: 30px;
+}
+
+.medium {
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+.small {
+    height: 400px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        flex-direction: column;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+    }
+
+    .large {
+        height: 350px;
+        margin-bottom: 20px;
+    }
+
+    .medium {
+        height: 250px;
+        margin-bottom: 15px;
+    }
+
+    .small {
+        height: 200px;
+        margin-bottom: 15px;
+    }
+}
+
+.imageWrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.projectImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover .projectImage {
+    transform: scale(1.05);
+}
+
+.imageLink {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Enhanced animation styles */
+.animating .imageWrapper {
+    opacity: 0.2;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+}
+
+.projectCard {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.redBackground {
+    background-color: #e74c3c;
+}
+
+.purpleBackground {
+    background-color: #9b59b6;
+}
+
+.gallery .imageWrapper:nth-child(odd) {
+    align-self: flex-start;
+    width: 95%;
+}
+
+/* Improved animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-50px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(50px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+/* Apply different entrance animations to different cards */
+.animating .imageWrapper:nth-child(3n+1) {
+    animation: slideInFromLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+.animating .imageWrapper:nth-child(3n+2) {
+    animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.animating .imageWrapper:nth-child(3n) {
+    animation: slideInFromRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.6s;
+}
+
+/* Make sure each card has a unique delay for a cascading effect */
+.animating .imageWrapper:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.animating .imageWrapper:nth-child(2) {
+    animation-delay: 0.45s;
+}
+
+.animating .imageWrapper:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.animating .imageWrapper:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.animating .imageWrapper:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(100, 100);
+        opacity: 0;
+    }
+}
