@@ -1,121 +1,103 @@
-"use client"
-import {FC, useState, useEffect, useRef} from "react";
-import Image from "next/image";
+"use client";
+import { FC } from "react";
 import Link from "next/link";
 import styles from "./ProjectGallery.module.css";
+import Image from "next/image";
 
 interface ProjectImage {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    link?: string;
-    backgroundColor?: "redBackground" | "purpleBackground";
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  link?: string;
+  backgroundColor?: "redBackground" | "purpleBackground";
 }
 
 interface ProjectGalleryProps {
-    title?: string;
-    images: ProjectImage[];
-    rearrangeInterval?: number;
-    className?: string;
+  title?: string;
+  images: ProjectImage[];
+  className?: string;
 }
 
 const ProjectGallery: FC<ProjectGalleryProps> = ({
-                                                     title,
-                                                     images,
-                                                     rearrangeInterval = 0, // Por defecto, sin reorganización automática
-                                                     className = "",
-                                                 }) => {
-    const [positions, setPositions] = useState<number[]>(images.map((_, i) => i));
-    const [isAnimating, setIsAnimating] = useState(false);
-    const galleryRef = useRef<HTMLDivElement>(null);
+  title,
+  images,
+  className = "",
+}) => {
+  // FUNCION PARA DETERMINAR TAMAÑO DE IMAGEN SOLO EN DESKTOP
+  const getImageSize = (index: number) => {
+    if (index % 3 === 0) return styles.large;
+    if (index % 3 === 1) return styles.medium;
+    return styles.small;
+  };
 
-    // Función para reorganizar los contenedores manteniendo las mismas imágenes
-    const shuffleContainers = () => {
-        if (isAnimating) return;
+  // FUNCION PARA OBTENER COLOR DE FONDO CON PATRON MAS ALEATORIO
+  const getBackgroundClass = (image: ProjectImage, index: number) => {
+    if (image.backgroundColor) return styles[image.backgroundColor];
 
-        setIsAnimating(true);
+    // PATRON MAS ALEATORIO PARA COLORES
+    const colorPatterns = [
+      (i: number) => i % 5 === 0 || i % 7 === 0,
+      (i: number) => (i * 3) % 11 < 5,
+      (i: number) => i % 6 === 2 || i % 6 === 4,
+    ];
 
-        // Esperar a que termine la animación de salida
-        setTimeout(() => {
-            // Create a new array of shuffled positions
-            const shuffled = [...positions];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            setPositions(shuffled);
+    const patternIndex = index % colorPatterns.length;
+    const shouldBeRed = colorPatterns[patternIndex](index);
 
-            // Wait for the enter animation to complete
-            setTimeout(() => {
-                setIsAnimating(false);
-            }, 800);
-        }, 400);
-    };
+    return shouldBeRed ? styles.redBackground : styles.purpleBackground;
+  };
 
-    useEffect(() => {
-        if (rearrangeInterval > 0) {
-            const intervalId = setInterval(shuffleContainers, rearrangeInterval);
-            return () => clearInterval(intervalId);
-        }
-    }, [rearrangeInterval, isAnimating]);
-
-    const getImageSize = (index: number) => {
-        if (index % 3 === 0) return styles.large;
-        if (index % 3 === 1) return styles.medium;
-        return styles.small;
-    };
-
-    const getBackgroundClass = (image: ProjectImage, index: number) => {
-        if (image.backgroundColor) return styles[image.backgroundColor];
-        return index % 2 === 0 ? styles.redBackground : styles.purpleBackground;
-    };
-
-    const orderedImages = positions.map(pos => images[pos]);
-
-    return (
-        <div className={`${styles.galleryContainer} ${className}`}>
-            <div
-                className={`${styles.gallery} ${isAnimating ? styles.animating : ""}`}
-                ref={galleryRef}
-            >
-                {orderedImages.map((image, displayIndex) => {
-                    // Find the original index of this image
-                    const originalIndex = images.findIndex(img => img.src === image.src);
-
-                    return (
-                        <div
-                            key={`image-${originalIndex}`}
-                            className={`${styles.imageWrapper} ${getImageSize(displayIndex)} ${getBackgroundClass(image, displayIndex)}`}
-                            style={{
-                                zIndex: isAnimating ? orderedImages.length - displayIndex : 1
-                            }}
-                        >
-                            {image.link ? (
-                                <Link href={image.link} className={styles.imageLink}>
-                                    <Image
-                                        src={image.src}
-                                        alt={image.alt}
-                                        width={image.width}
-                                        height={image.height}
-                                        className={styles.projectImage}
-                                    />
-                                </Link>
-                            ) : (
-                                <Image
-                                    src={image.src}
-                                    alt={image.alt}
-                                    width={image.width}
-                                    height={image.height}
-                                    className={styles.projectImage}
-                                />
-                            )}
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
-    );
+  return (
+    <div className={`${styles.galleryContainer} ${className}`}>
+      {title && <h2 className={styles.galleryTitle}>{title}</h2>}
+      <div className={styles.gallery}>
+        {images.map((image, index) => (
+          <div
+            key={`image-${index}`}
+            className={`${styles.imageWrapper} ${getImageSize(
+              index
+            )} ${getBackgroundClass(image, index)}`}
+            // AÑADIR DATA ATTRIBUTES PARA DEBUGGING SI ES NECESARIO
+            data-index={index}
+            data-size={getImageSize(index).split(".")[1]} // EXTRAE EL NOMBRE DE LA CLASE
+          >
+            {image.link ? (
+              <Link
+                href={image.link}
+                className={styles.imageLink}
+                aria-label={`Ver proyecto: ${image.alt}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  className={styles.projectImage}
+                  // OPTIMIZACIONES DE NEXT.JS
+                  priority={index < 2} // PRIORIZAR LAS PRIMERAS 2 IMAGENES
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                />
+              </Link>
+            ) : (
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                className={styles.projectImage}
+                // OPTIMIZACIONES DE NEXT.JS
+                priority={index < 2} // PRIORIZAR LAS PRIMERAS 2 IMAGENES
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default ProjectGallery;
