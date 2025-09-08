@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
 :root {
   --large-max-width: 1400px;
@@ -8,7 +8,7 @@
   --primary-text-color: #fff;
   --secondary-text-color: #aea79c;
   --tertiary-text-color: #e5e3df;
-  --accent-text-color: #FF0092;
+  --accent-text-color: #ff0092;
 
   --small-spacing: 10px;
   --normal-spacing: 20px;
@@ -37,6 +37,7 @@
 body {
   background-color: var(--main-background-color);
   color: var(--secondary-text-color);
+  font-size: var(--small-font-size);
 }
 
 strong {
