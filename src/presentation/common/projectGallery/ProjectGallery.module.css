@@ -17,21 +17,22 @@
   position: relative;
   overflow: hidden;
   background-color: #222;
+  height: 50vh; /* HEIGHT BASE PARA IMAGEWRAPPER */
 }
 
-/* TAMAÑOS PARA DESKTOP */
+/* TAMAÑOS PARA DESKTOP CON HEIGHT AUTOMATICO */
 .large {
-  height: 600px;
+  min-height: 70vh;
   margin-bottom: 30px;
 }
 
 .medium {
-  height: 500px;
+  min-height: 60vh;
   margin-bottom: 20px;
 }
 
 .small {
-  height: 400px;
+  min-height: 40vh;
   margin-bottom: 15px;
 }
 
@@ -40,17 +41,21 @@
   .gallery {
     gap: 15px;
   }
-  
+
+  .imageWrapper {
+    min-height: 60vh; /* REDUCIR MIN HEIGHT EN TABLETS */
+  }
+
   .large {
-    height: 450px;
+    min-height: 65vh;
   }
-  
+
   .medium {
-    height: 400px;
+    min-height: 62vh;
   }
-  
+
   .small {
-    height: 350px;
+    min-height: 60vh;
   }
 }
 
@@ -62,10 +67,11 @@
   }
 
   /* TODAS LAS IMAGENES CON LA MISMA ALTURA EN MOBILE */
+  .imageWrapper,
   .large,
   .medium,
   .small {
-    height: 280px;
+    min-height: 50vh; /* MIN HEIGHT PARA MOBILE */
     margin-bottom: 0;
     width: 100%; /* OCUPAR TODO EL ANCHO DISPONIBLE */
   }
@@ -82,20 +88,22 @@
   .gallery {
     gap: 12px;
   }
-  
+
+  .imageWrapper,
   .large,
   .medium,
   .small {
-    height: 240px;
+    min-height: 45vh; /* REDUCIR MIN HEIGHT EN MOBILE PEQUEÑO */
   }
 }
 
 /* RESPONSIVE PARA MOBILE MUY PEQUEÑO */
 @media (max-width: 320px) {
+  .imageWrapper,
   .large,
   .medium,
   .small {
-    height: 200px;
+    min-height: 40vh; /* MIN HEIGHT PARA PANTALLAS MUY PEQUEÑAS */
   }
 }
 
@@ -141,32 +149,32 @@
     align-self: flex-start;
     width: 95%;
   }
-  
+
   /* VARIACIONES ADICIONALES PARA CREAR PATRON MAS DESORDENADO */
   .gallery .imageWrapper:nth-child(7n) {
     align-self: flex-end;
     width: 98%;
   }
-  
+
   .gallery .imageWrapper:nth-child(11n) {
     align-self: center;
     width: 92%;
   }
-  
+
   .gallery .imageWrapper:nth-child(13n) {
     align-self: flex-start;
     width: 97%;
   }
-  
+
   /* ROTACIONES SUTILES PARA ALGUNAS IMAGENES */
   .gallery .imageWrapper:nth-child(5n) {
     transform: rotate(0.5deg);
   }
-  
+
   .gallery .imageWrapper:nth-child(9n) {
     transform: rotate(-0.3deg);
   }
-  
+
   .gallery .imageWrapper:nth-child(17n) {
     transform: rotate(0.7deg);
   }
