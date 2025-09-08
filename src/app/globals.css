@@ -2,6 +2,7 @@
 
 :root {
   --large-max-width: 1400px;
+  --small-max-width: 600px;
 
   --main-background-color: #000;
 
@@ -17,7 +18,7 @@
 
   --small-font-size: 14px;
   --medium-font-size: 18px;
-  --large-font-size: 36px;
+  --large-font-size: 38px;
   --x-large-font-size: 46px;
 
   --small-letter-spacing: -2px;
@@ -61,23 +62,5 @@ strong {
   100% {
     transform: translate(0px, 0);
     opacity: 1;
-  }
-}
-
-@media screen and (min-width: 392px) {
-  :root {
-    --large-font-size: 42px;
-  }
-}
-
-@media screen and (min-width: 515px) {
-  :root {
-    --large-font-size: 45px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  :root {
-    --large-font-size: 72px;
   }
 }
