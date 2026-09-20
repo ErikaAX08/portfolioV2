@@ -10,11 +10,12 @@ import Form from "@/presentation/modules/project/form/Form";
 export async function generateMetadata({
   params,
 }: {
-  params: { page: string; subpage: string };
+  params: Promise<{ page: string; subpage: string }>;
 }): Promise<Metadata> {
+  const { page, subpage } = await params;
   const subpageRepository = new FirebaseSubpageRepository();
   const getSubpage = new GetSubpage(subpageRepository);
-  const projectData = await getSubpage.execute(params.page, params.subpage);
+  const projectData = await getSubpage.execute(page, subpage);
 
   if (!projectData) return notFound();
 
@@ -32,12 +33,13 @@ export async function generateMetadata({
 export default async function Subpage({
   params,
 }: {
-  params: { page: string; subpage: string };
+  params: Promise<{ page: string; subpage: string }>;
 }) {
+  const { page, subpage } = await params;
 
   const subpageRepository = new FirebaseSubpageRepository();
   const getSubpage = new GetSubpage(subpageRepository);
-  const subpageData = await getSubpage.execute(params.page, params.subpage);
+  const subpageData = await getSubpage.execute(page, subpage);
 
   if (!subpageData) return notFound();
 
@@ -46,8 +48,8 @@ export default async function Subpage({
   } else if (subpageData.type === "form") {
     return (
       <Form
-        urlPage={params.page}
-        urlSubpage={params.subpage}
+        urlPage={page}
+        urlSubpage={subpage}
         page={subpageData.data as FormModel}
       />
     );
