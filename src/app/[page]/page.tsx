@@ -8,11 +8,12 @@ import { Article as ArticleModel } from "@/domain/models/Article";
 export async function generateMetadata({
   params,
 }: {
-  params: { page: string };
+  params: Promise<{ page: string }>;
 }): Promise<Metadata> {
+  const { page } = await params;
   const projectRepository = new FirebaseArticleRepository();
   const getProject = new GetArticle(projectRepository);
-  const projectData = await getProject.execute(params.page);
+  const projectData = await getProject.execute(page);
 
   if (!projectData) return notFound();
 
@@ -27,10 +28,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { page: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ page: string }>;
+}) {
+  const { page } = await params;
   const projectRepository = new FirebaseArticleRepository();
   const getPage = new GetArticle(projectRepository);
-  const pageData = await getPage.execute(params.page);
+  const pageData = await getPage.execute(page);
 
   if (!pageData) return notFound();
 
